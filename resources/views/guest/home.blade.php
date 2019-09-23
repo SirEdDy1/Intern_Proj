@@ -33,10 +33,6 @@
             object-fit: cover;
             object-position: center;
         }
-        .nopadding {
-            padding: 0 !important;
-            margin: 0 !important;
-        }
         .other{
             padding:auto;
             padding-top: 3rem;
