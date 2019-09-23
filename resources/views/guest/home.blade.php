@@ -21,7 +21,7 @@
             object-position: center;
         }
         .picbox{
-            width: 200px;
+            width: 250px;
             height: 150px;
             overflow: hidden;
             justify-content: center;
@@ -41,31 +41,69 @@
             padding:auto;
             padding-top: 3rem;
         }
+        .bigbox{
+            width: 300px;
+            height: 200px;
+            overflow: hidden;
+            justify-content: center;
+            align-items: center;
+        }
+        .bigbox > img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+        .smallbox{
+            width: 100px;
+            height: 100px;
+            overflow: hidden;
+            justify-content: center;
+            align-items: center;
+        }
+        .smallbox > img{
+            width: 100px;
+            height: 100px;
+            overflow: hidden;
+            justify-content: center;
+            align-items: center;
+        }
     </style>
 @endpush
 
 @section('content')
-    <div class="main">
+    <div class="container">
         <div class="homepic col-12">
             <img src="{{URL::asset('/pic/TranPhu.jpg')}}" alt="">
         </div>
         <div class="features col-12 row">
             <div class="col row">
-                <div class="col">
+                <div class="col-3">
                     <div class="row"><h5>Lorem ipsum dolor sit amet.</h5></div>
                     <div class="row picbox"><img src="{{URL::asset('/pic/TranPhu.jpg')}}" alt=""></div>
                     <div class="row">Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt, in.</div>
                 </div>
-                <div class="col">
+                <div class="col-3">
                     <div class="row"><h5>Lorem ipsum dolor sit amet.</h5></div>
                     <div class="row picbox"><img src="{{URL::asset('/pic/TranPhu.jpg')}}" alt=""></div>
                     <div class="row">Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt, in.</div>
                 </div>
-                <div class="col">
+                <div class="col-3">
                     <div class="row"><h5>Lorem ipsum dolor sit amet.</h5></div>
                     <div class="row picbox"><img src="{{URL::asset('/pic/TranPhu.jpg')}}" alt=""></div>
                     <div class="row">Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt, in.</div>
                 </div>
+                <div class="col-3">
+                    <div class="col-12">
+                        <div class="row bigbox"><img src="{{URL::asset('/pic/TranPhu.jpg')}}" alt=""></div>
+                        <div class="row">
+                            <div class="col-4 smallbox"><img src="{{URL::asset('/pic/TranPhu.jpg')}}" alt=""></div>
+                            <div class="col-4 smallbox"><img src="{{URL::asset('/pic/TranPhu.jpg')}}" alt=""></div>
+                            <div class="col-4 smallbox"><img src="{{URL::asset('/pic/TranPhu.jpg')}}" alt=""></div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
         <div class="other">
