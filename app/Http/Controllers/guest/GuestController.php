@@ -25,4 +25,7 @@ class GuestController extends Controller
     function contact(){
         return view('guest.contact');
     }
+    function gallery(){
+        return view('guest.gallery');
+    }
 }

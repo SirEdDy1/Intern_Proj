@@ -70,7 +70,7 @@
 @section('content')
     <div class="container">
         <div class="homepic col-12">
-            <img src="{{URL::asset('/pic/TranPhu.jpg')}}" alt="">
+            <img src="{{URL::asset('/pic/Home.jpg')}}" alt="">
         </div>
         <div class="features col-12 row">
             <div class="col row">

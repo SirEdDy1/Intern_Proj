@@ -23,6 +23,9 @@
             <li class="nav-item pl-5 pr-5">
                 <a class="nav-link" href="/contact">Liên Hệ</a>
             </li>
+            <li class="nav-item pl-5 pr-5">
+                <a class="nav-link" href="/gallery">Thư viện ảnh</a>
+            </li>
         </ul>
     </div>
 </nav>

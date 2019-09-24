@@ -24,4 +24,5 @@ Route::group([
     Route::get('/activity', 'GuestController@activity');
     Route::get('/schedule', 'GuestController@schedule');
     Route::get('/contact', 'GuestController@contact');
+    Route::get('/gallery', 'GuestController@gallery');
 });
