@@ -11,6 +11,17 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+use Illuminate\Support\Facades\Route;
+
+
+
+Route::group([
+    'namespace' => 'guest'
+], function ($router) {
+    Route::get('/', 'GuestController@home');
+    Route::get('/about', 'GuestController@about');
+    Route::get('/news', 'GuestController@news');
+    Route::get('/activity', 'GuestController@activity');
+    Route::get('/schedule', 'GuestController@schedule');
+    Route::get('/contact', 'GuestController@contact');
 });
