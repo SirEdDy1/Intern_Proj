@@ -65,10 +65,11 @@
             font-weight: bold;
         }
     </style>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 @endpush
 
 @section('content')
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
     <div class="container m-0">
       <div class="row">
           <div class="col">
