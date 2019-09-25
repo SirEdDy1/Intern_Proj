@@ -57,9 +57,10 @@
                 </ul>
             </div>
             <div class="col-5 schedule">
-                <h5>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum, sequi.</h5>
-                <p>Ngày 25/09/1998</p>
-                <a href="">file.docx</a>
+                <h5>Title Goes Here</h5>
+                <div>
+                    Contents Go here
+                </div>
             </div>
             <div class="col">
                 <h4>Liên hệ</h4>

@@ -51,18 +51,15 @@
             object-position: center;
         }
         .smallbox{
-            width: 100px;
+            width: 350px;
             height: 100px;
             overflow: hidden;
-            justify-content: center;
-            align-items: center;
         }
         .smallbox > img{
-            width: 100px;
-            height: 100px;
-            overflow: hidden;
-            justify-content: center;
-            align-items: center;
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+            object-position: center;
         }
     </style>
 @endpush
@@ -89,10 +86,10 @@
                     <div class="row picbox"><img src="{{URL::asset('/pic/TranPhu.jpg')}}" alt=""></div>
                     <div class="row">Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt, in.</div>
                 </div>
-                <div class="col-auto">
+                <div class="col-3">
                     <div class="row bigbox"><img src="{{URL::asset('/pic/TranPhu.jpg')}}" alt=""></div>
                     <div class="row">
-                        <div class="col-4 smallbox"><img src="{{URL::asset('/pic/TranPhu.jpg')}}" alt=""></div>
+                        <div class="col-4 smallbox"><img src="{{URL::asset('/pic/schoolgate.jpg')}}" alt=""></div>
                         <div class="col-4 smallbox"><img src="{{URL::asset('/pic/TranPhu.jpg')}}" alt=""></div>
                         <div class="col-4 smallbox"><img src="{{URL::asset('/pic/TranPhu.jpg')}}" alt=""></div>
                     </div>
@@ -106,5 +103,6 @@
                 <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam.</li>
             </ul>
         </div>
+    </div>
     </div>
 @endsection
