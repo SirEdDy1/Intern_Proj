@@ -34,14 +34,12 @@
             margin: 0;
         }
         li {
-             padding-left: 16px;
              clear: both;
         }
 
         li:before {
             content: ""; /* Insert content that looks like bullets */
-            padding-right: 8px;
-            color: blue; /* Or a color you prefer */
+
         }
 
         .newspic{
