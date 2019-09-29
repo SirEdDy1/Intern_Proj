@@ -26,3 +26,17 @@ Route::group([
     Route::get('/contact', 'GuestController@contact');
     Route::get('/gallery', 'GuestController@gallery');
 });
+
+
+
+Route::group([
+    'namespace' => 'admin'
+], function ($router) {
+    Route::get('/login', 'AdminController@login');
+    Route::get('/admin', 'AdminController@dashboard');
+    Route::get('admin/documents', 'AdminController@managepost');
+    Route::get('admin/gallery', 'AdminController@managegallery');
+    Route::get('admin/post', 'AdminController@managepost');
+    Route::get('admin/post/{{$id}}', 'AdminController@editpost');
+});
+
