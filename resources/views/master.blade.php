@@ -24,6 +24,7 @@
 <div id="app">
     @yield('navbar')
     <div class="container">
+        @include('guest.inc.messages')
         @yield('content')
     </div>
     @yield('footer')

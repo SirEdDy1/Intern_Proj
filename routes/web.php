@@ -25,6 +25,7 @@ Route::group([
     Route::get('/schedule', 'GuestController@schedule');
     Route::get('/contact', 'GuestController@contact');
     Route::get('/gallery', 'GuestController@gallery');
+    Route::post('/contact', 'GuestController@contact_post')->name('contact.post');
 });
 
 
@@ -32,11 +33,15 @@ Route::group([
 Route::group([
     'namespace' => 'admin'
 ], function ($router) {
-    Route::get('/login', 'AdminController@login');
+    Route::get('/login', 'AdminController@login')->name('login');
     Route::get('/admin', 'AdminController@dashboard');
     Route::get('admin/documents', 'AdminController@managepost');
     Route::get('admin/gallery', 'AdminController@managegallery');
     Route::get('admin/post', 'AdminController@managepost');
-    Route::get('admin/post/{{$id}}', 'AdminController@editpost');
+    Route::get('admin/post/{{id}}', 'AdminController@editpost');
+    Route::get('admin/contact', 'AdminController@managecontact');
+    Route::get('admin/contact/{id}','AdminController@show')->name('admin.contact.detail');
+
+    Route::resource('contacts','AdminController');
 });
 

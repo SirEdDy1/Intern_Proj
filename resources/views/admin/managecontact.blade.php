@@ -217,6 +217,7 @@
             <i class="fa fa-folder"></i> <span>Quản lý tài liệu</span>
           </a>
         </li>
+
         <li class="treeview">
           <a href="/admin/post">
             <i class="fa fa-book-open"></i> <span>Quản lý bài viết</span>
@@ -230,7 +231,6 @@
         <li class="treeview">
             <a href="/admin/contact">
               <i class="fa fa-images"></i> <span>Quản lý liên lạc</span>
-            </a>
         </li>
       </ul>
     </section>
@@ -244,8 +244,8 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Blank page
-        <small>it all starts here</small>
+        Quản lý
+        <small>Liên Lạc</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -260,19 +260,23 @@
       <!-- Default box -->
       <div class="box">
         <div class="box-header with-border">
-          <h3 class="box-title">Title</h3>
+          <h3 class="box-title">Liên Lạc</h3>
 
-          <div class="box-tools pull-right">
-            <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
-              <i class="fa fa-minus"></i></button>
-            <button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove">
-              <i class="fa fa-times"></i></button>
-          </div>
+
         </div>
-        <div class="box-body">
-          Start creating your amazing application!
-        </div>
-        <!-- /.box-body -->
+            @if(count($contacts) > 0)
+                @foreach ($contacts as $contact)
+                    <div class="well">
+                    <h3><a href="/admin/contact/{{$contact->id}}">{{$contact->name}}</a></h3>
+                    <small>Gửi vào lúc{{$contact->created_at}}</small>
+                    <h5>Email: {{$contact->email}}</h5>
+                    </div>
+                @endforeach
+            @else
+            <div class="box-body">
+                Thư liên lạc trống!!
+              </div>
+            @endif
         <div class="box-footer">
           Footer
         </div>

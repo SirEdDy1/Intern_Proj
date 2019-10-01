@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\admin;
 
+use App\Contact;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -24,5 +25,15 @@ class AdminController extends Controller
     }
     function managedocument(){
         return view('admin.managedocument');
+    }
+    function managecontact(){
+        $contacts = Contact::orderBy('created_at','desc')->paginate(10);
+        return view('admin.managecontact')->with('contacts', $contacts);
+    }
+    public function show($id){
+        $contact = Contact::find($id);
+        return view('admin.showcontact', [
+            'contact' => $contact
+        ]);
     }
 }

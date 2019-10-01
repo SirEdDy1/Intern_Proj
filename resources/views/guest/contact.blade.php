@@ -32,20 +32,18 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <form>
+            <form action="{{route('contact.post')}}" method="POST">
+                @csrf
                     <h3>Gửi liên hệ</h3>
                     <h5>Trường THPT Trần Phú</h5>
-                    Tên của bạn (bắt buộc)<br>
-                    <input type="text" name="" value="" size="49">
+                    Tiêu Đề (bắt buộc)<br>
+                    <input type="text" name="name" value="" size="49">
                     <br><br>
                     Địa chỉ email (bắt buộc)<br>
-                    <input type="email" name="" value="" size="49">
-                    <br><br>
-                    Tiêu đề<br>
-                    <input type="text" name="" value="" size="49">
+                    <input type="email" name="email" value="" size="49">
                     <br><br>
                     Nội Dung<br>
-                    <textarea type="text" name="message" rows="8" cols="50"></textarea>
+                    <textarea type="text" name="body" rows="8" cols="50"></textarea>
                     <br><br>
                     <input type="submit" value="Gửi đi!">
                 </form>
