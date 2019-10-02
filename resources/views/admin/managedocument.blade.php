@@ -226,6 +226,7 @@
         <li class="treeview">
             <a href="/admin/gallery">
               <i class="fa fa-images"></i> <span>Quản lý ảnh</span>
+            </a>
         </li>
         <li class="treeview">
             <a href="/admin/contact">

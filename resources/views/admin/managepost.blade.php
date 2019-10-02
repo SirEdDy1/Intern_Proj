@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Trang chủ</title>
+  <title>Trang Quản lý Bài viết</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -217,6 +217,7 @@
             <i class="fa fa-folder"></i> <span>Quản lý tài liệu</span>
           </a>
         </li>
+
         <li class="treeview">
           <a href="/admin/post">
             <i class="fa fa-book-open"></i> <span>Quản lý bài viết</span>
@@ -230,7 +231,6 @@
         <li class="treeview">
             <a href="/admin/contact">
               <i class="fa fa-images"></i> <span>Quản lý liên lạc</span>
-            </a>
         </li>
       </ul>
     </section>

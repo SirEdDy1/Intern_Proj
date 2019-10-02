@@ -35,12 +35,13 @@ Route::group([
 ], function ($router) {
     Route::get('/login', 'AdminController@login')->name('login');
     Route::get('/admin', 'AdminController@dashboard');
-    Route::get('admin/documents', 'AdminController@managepost');
+    Route::get('admin/document', 'AdminController@managepost');
     Route::get('admin/gallery', 'AdminController@managegallery');
     Route::get('admin/post', 'AdminController@managepost');
-    Route::get('admin/post/{{id}}', 'AdminController@editpost');
+    Route::get('admin/post/{id}', 'AdminController@editpost');
     Route::get('admin/contact', 'AdminController@managecontact');
     Route::get('admin/contact/{id}','AdminController@show')->name('admin.contact.detail');
+    Route::post('admin/gallery','AdminController@admin_image_post')->name('admin.image.post');
 
     Route::resource('contacts','AdminController');
 });

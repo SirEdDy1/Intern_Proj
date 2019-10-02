@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Trang chủ</title>
+  <title>Trang Thư Viện Ảnh</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -226,6 +226,7 @@
         <li class="treeview">
             <a href="/admin/gallery">
               <i class="fa fa-images"></i> <span>Quản lý ảnh</span>
+            </a>
         </li>
         <li class="treeview">
             <a href="/admin/contact">
@@ -243,8 +244,8 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Blank page
-        <small>it all starts here</small>
+        Quản lý
+        <small>Thư viện ảnh</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -259,17 +260,37 @@
       <!-- Default box -->
       <div class="box">
         <div class="box-header with-border">
-          <h3 class="box-title">Title</h3>
-
-          <div class="box-tools pull-right">
-            <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
-              <i class="fa fa-minus"></i></button>
-            <button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove">
-              <i class="fa fa-times"></i></button>
-          </div>
+          <h3 class="box-title">Danh sách ảnh</h3>
         </div>
-        <div class="box-body">
-          Start creating your amazing application!
+        <form action="{{route('admin.image.post')}}" enctype="multipart/form-data" method="POST">
+            @csrf
+                <div class="form-group">
+                    <label>Tiêu đề ảnh</label><br>
+                    <input type="text" placeholder="Nhập tiêu đề ảnh" size ='49' name="title">
+                </div>
+                <div class="form-group">
+                    <label class="custom-file-label">Chọn Ảnh</label>
+                    <input type="file" class="custom-file-input" size ='49' name="image">
+                </div>
+                <input type="submit" value="Đăng ảnh!">
+            </form>
+        <div class="well">
+            <div class="row">
+            @if(count($pictures) > 0)
+                @foreach ($pictures as $picture)
+                <div class="col">
+                    <h3>{{$picture->title}}</h3>
+                    <img src="{{URL::asset('/uploads/gallerypictures/' . $picture->image)}}" alt="" width="400" height="300">
+                </div>
+                <small>Gửi vào lúc{{$picture->created_at}}</small>
+                @endforeach
+            @else
+            <div class="box-body">
+                Thư viện ảnh trống!!
+              </div>
+                <div class="col"></div>
+            </div>
+            @endif
         </div>
         <!-- /.box-body -->
         <div class="box-footer">
