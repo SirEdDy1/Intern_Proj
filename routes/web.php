@@ -42,6 +42,7 @@ Route::group([
     Route::get('admin/contact', 'AdminController@managecontact');
     Route::get('admin/contact/{id}','AdminController@show')->name('admin.contact.detail');
     Route::post('admin/gallery','AdminController@admin_image_post')->name('admin.image.post');
+    Route::post('admin/gallery/{id}','AdminController@delete')->name('delete');
 
     Route::resource('contacts','AdminController');
 });

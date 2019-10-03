@@ -25,76 +25,19 @@ div.desc {
 @section('content')
 
 <div class="gallery">
-    <a target="_blank" href="Home.jpg">
-      <img src="{{URL::asset('/pic/schoolgate.jpg')}}" alt="" width="400" height="300">
+    @if(count($pictures) > 0)
+    @foreach ($pictures as $picture)
+    <a target="_blank">
+      <img src="{{URL::asset('/uploads/gallerypictures/' . $picture->image)}}" alt="" width="400" height="300">
     </a>
-    <div class="desc">Add a description of the image here</div>
+    <div class="desc">{{$picture->title}}</div>
   </div>
-  <div class="gallery">
-    <a target="_blank" href="Home.jpg">
-      <img src="{{URL::asset('/pic/schoolgate.jpg')}}" alt="" width="400" height="300">
-    </a>
-    <div class="desc">Add a description of the image here</div>
+  @endforeach
+ @else
+ <div class="box-body">
+    Thư viện ảnh trống!!
   </div>
-  <div class="gallery">
-    <a target="_blank" href="Home.jpg">
-      <img src="{{URL::asset('/pic/schoolgate.jpg')}}" alt="" width="400" height="300">
-    </a>
-    <div class="desc">Add a description of the image here</div>
-  </div>
-  <div class="gallery">
-    <a target="_blank" href="Home.jpg">
-      <img src="{{URL::asset('/pic/schoolgate.jpg')}}" alt="" width="400" height="300">
-    </a>
-    <div class="desc">Add a description of the image here</div>
-  </div>
-  <div class="gallery">
-    <a target="_blank" href="Home.jpg">
-      <img src="{{URL::asset('/pic/schoolgate.jpg')}}" alt="" width="400" height="300">
-    </a>
-    <div class="desc">Add a description of the image here</div>
-  </div>
-  <div class="gallery">
-    <a target="_blank" href="Home.jpg">
-      <img src="{{URL::asset('/pic/schoolgate.jpg')}}" alt="" width="400" height="300">
-    </a>
-    <div class="desc">Add a description of the image here</div>
-  </div>
-  <div class="gallery">
-    <a target="_blank" href="Home.jpg">
-      <img src="{{URL::asset('/pic/schoolgate.jpg')}}" alt="" width="400" height="300">
-    </a>
-    <div class="desc">Add a description of the image here</div>
-  </div>
-  <div class="gallery">
-    <a target="_blank" href="Home.jpg">
-      <img src="{{URL::asset('/pic/schoolgate.jpg')}}" alt="" width="400" height="300">
-    </a>
-    <div class="desc">Add a description of the image here</div>
-  </div>
-  <div class="gallery">
-    <a target="_blank" href="Home.jpg">
-      <img src="{{URL::asset('/pic/schoolgate.jpg')}}" alt="" width="400" height="300">
-    </a>
-    <div class="desc">Add a description of the image here</div>
-  </div>
-  <div class="gallery">
-    <a target="_blank" href="Home.jpg">
-      <img src="{{URL::asset('/pic/schoolgate.jpg')}}" alt="" width="400" height="300">
-    </a>
-    <div class="desc">Add a description of the image here</div>
-  </div>
-  <div class="gallery">
-    <a target="_blank" href="Home.jpg">
-      <img src="{{URL::asset('/pic/schoolgate.jpg')}}" alt="" width="400" height="300">
-    </a>
-    <div class="desc">Add a description of the image here</div>
-  </div>
-  <div class="gallery">
-    <a target="_blank" href="Home.jpg">
-      <img src="{{URL::asset('/pic/schoolgate.jpg')}}" alt="" width="400" height="300">
-    </a>
-    <div class="desc">Add a description of the image here</div>
-  </div>
-
+    <div class="col"></div>
+</div>
+@endif
 @endsection

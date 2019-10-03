@@ -60,4 +60,11 @@ class AdminController extends Controller
         $picture->save();
         return redirect('/admin/gallery');
     }
+
+    public function delete($id){
+        $picture = Picture::find($id);
+        $picture->delete();
+
+        return redirect('admin/gallery')->with('success','Xóa ảnh thành công');
+    }
 }

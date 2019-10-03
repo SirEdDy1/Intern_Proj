@@ -283,6 +283,10 @@
                     <img src="{{URL::asset('/uploads/gallerypictures/' . $picture->image)}}" alt="" width="400" height="300">
                 </div>
                 <small>Gửi vào lúc{{$picture->created_at}}</small>
+                <form action="{{route('delete', $picture->id)}}" method="POST">
+                    @csrf
+                    <input type="submit" value="Gửi đi!">
+                </form>
                 @endforeach
             @else
             <div class="box-body">

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\guest;
 
+use App\Picture;
 use App\Contact;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -27,7 +28,8 @@ class GuestController extends Controller
         return view('guest.contact');
     }
     function gallery(){
-        return view('guest.gallery');
+        $pictures = Picture::orderBy('created_at','desc')->paginate(10);
+        return view('guest.gallery')->with('pictures',$pictures);
     }
     public function contact_post(Request $request){
         $this->validate($request,[
