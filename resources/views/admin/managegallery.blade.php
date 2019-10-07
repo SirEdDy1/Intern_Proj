@@ -231,6 +231,7 @@
         <li class="treeview">
             <a href="/admin/contact">
               <i class="fa fa-images"></i> <span>Quản lý liên lạc</span>
+            </a>
         </li>
       </ul>
     </section>
@@ -256,12 +257,12 @@
 
     <!-- Main content -->
     <section class="content">
-
       <!-- Default box -->
       <div class="box">
         <div class="box-header with-border">
           <h3 class="box-title">Danh sách ảnh</h3>
         </div>
+        @include('guest.inc.messages')
         <form action="{{route('admin.image.post')}}" enctype="multipart/form-data" method="POST">
             @csrf
                 <div class="form-group">
@@ -273,6 +274,7 @@
                     <input type="file" class="custom-file-input" size ='49' name="image">
                 </div>
                 <input type="submit" value="Đăng ảnh!">
+          <br><br>
             </form>
         <div class="well">
             <div class="row">
@@ -285,7 +287,7 @@
                 <small>Gửi vào lúc{{$picture->created_at}}</small>
                 <form action="{{route('delete', $picture->id)}}" method="POST">
                     @csrf
-                    <input type="submit" value="Gửi đi!">
+                    <input type="submit" value="Xóa Ảnh!">
                 </form>
                 @endforeach
             @else

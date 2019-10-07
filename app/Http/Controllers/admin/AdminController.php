@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\admin;
 
+use App\Post;
+use App\Tag;
 use App\Picture;
 use App\Contact;
 use Illuminate\Http\Request;
@@ -12,6 +14,10 @@ class AdminController extends Controller
      function dashboard(){
         return view('admin.dashboard');
     }
+    function createpost(){
+         $tags = Tag::all();
+         return view('admin.createpost')->with('tags',$tags);
+    }
     function login(){
         return view('admin.login');
     }
@@ -20,7 +26,8 @@ class AdminController extends Controller
         return view('admin.managegallery')->with('pictures',$pictures);
     }
     function managepost(){
-        return view('admin.managepost');
+        $posts = Post::orderBy('created_at','desc')->paginate(10);
+         return view('admin.managepost')->with('posts',$posts);
     }
     function editpost(){
         return view('admin.editpost');
@@ -41,7 +48,7 @@ class AdminController extends Controller
     public function admin_image_post(Request $request){
         $this->validate($request,[
             'title' => 'required',
-            'image' => 'required',
+            'image' => 'image|required|max:2048',
         ]);
 
         $picture = new Picture;
@@ -66,5 +73,34 @@ class AdminController extends Controller
         $picture->delete();
 
         return redirect('admin/gallery')->with('success','Xóa ảnh thành công');
+    }
+    public function admin_post_create(Request $request){
+        $this->validate($request,[
+            'title' => 'required',
+            'body' => 'required',
+            'summary' => 'required',
+            'tag' => 'required',
+//            'cover' => 'image|required|max:2048',
+        ]);
+
+        $post = new Post;
+        $post->title = $request->input('title');
+        $post->content = $request->input('body');
+        $post->tag_id = $request->input('tag');
+        $post->summary = $request->input('summary');
+
+        if($request->hasfile('cover')){
+            $file =$request->file('cover');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time() . '.' . $extension;
+            $file->move('uploads/postcovers',$filename);
+            $post->cover = $filename;
+        }
+        else{
+            return $request;
+            $post->cover = '';
+        }
+        dd($post->save());
+        return redirect('/admin/managepost');
     }
 }

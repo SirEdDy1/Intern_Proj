@@ -231,6 +231,7 @@
         <li class="treeview">
             <a href="/admin/contact">
               <i class="fa fa-images"></i> <span>Quản lý liên lạc</span>
+            </a>
         </li>
       </ul>
     </section>

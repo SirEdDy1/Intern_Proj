@@ -231,6 +231,7 @@
         <li class="treeview">
             <a href="/admin/contact">
               <i class="fa fa-images"></i> <span>Quản lý liên lạc</span>
+            </a>
         </li>
       </ul>
     </section>
@@ -244,8 +245,8 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Blank page
-        <small>it all starts here</small>
+        Quản lý
+        <small>Bài viết</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -260,21 +261,28 @@
       <!-- Default box -->
       <div class="box">
         <div class="box-header with-border">
-          <h3 class="box-title">Title</h3>
-
-          <div class="box-tools pull-right">
-            <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
-              <i class="fa fa-minus"></i></button>
-            <button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove">
-              <i class="fa fa-times"></i></button>
-          </div>
+          <h3 class="box-title">Danh sách bài viết </h3>
+          @if(count($posts) > 0)
+            @foreach ($posts as $post)
+              <div class="well">
+                <h3><a href="/admin/contact/{{$post->id}}">{{$post->title}}</a></h3>
+                <small>Gửi vào lúc{{$post->created_at}}</small>
+                <h5>Thể Loại: {{$post->tag->name}}</h5>
+                <p>Tóm tắt: {{$post->summary}} </p>
+              </div>
+            @endforeach
+          @else
+            <div class="box-body">
+              Thư liên lạc trống!!
+            </div>
+          @endif
         </div>
         <div class="box-body">
-          Start creating your amazing application!
+          <a href="/admin/createpost" class="btn btn-info" role="button">Tạo bài viết mới</a>
         </div>
         <!-- /.box-body -->
         <div class="box-footer">
-          Footer
+
         </div>
         <!-- /.box-footer-->
       </div>
