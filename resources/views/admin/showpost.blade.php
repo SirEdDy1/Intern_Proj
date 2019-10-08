@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Trang Quản lý Bài viết</title>
+  <title>Trang Liên Lạc Chi Tiết</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -245,7 +245,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Quản lý
+        Chi tiết
         <small>Bài viết</small>
       </h1>
       <ol class="breadcrumb">
@@ -261,35 +261,18 @@
       <!-- Default box -->
       <div class="box">
         <div class="box-header with-border">
-          <h3 class="box-title">Danh sách bài viết </h3>
-          @if(count($posts) > 0)
-            @foreach ($posts as $post)
-              <div class="well">
-                <div class="row">
-                    <div class="col-md-4 col-sm-4">
-                    <img src="{{URL::asset('/uploads/postcovers/'. $post->cover)}}" alt="" width="400px" height="200px">
-                    </div>
-                    <div class="col-md-8 col-sm-8">
-                            <h3><a href="/admin/post/{{$post->id}}">{{$post->title}}</a></h3>
-                            <small>Gửi vào lúc{{$post->created_at}}</small>
-                            <form action="{{route('deletepost', $post->id)}}" method="POST">
-                                    @csrf
-                                    <input type="submit" value="Xóa bài!" class="btn btn-default">
-                                </form>
-                                <br>
-                            <a href="/admin/post/{{$post->id}}/edit" class="btn btn-default">Sửa bài</a>
-                    </div>
-            @endforeach
-          @else
-            <div class="box-body">
-              Thư liên lạc trống!!
-            </div>
-          @endif
+          <h3 class="box-title">Bài Viết</h3>
+
+
         </div>
-        <div class="box-body">
-          <a href="/admin/createpost" class="btn btn-info" role="button">Tạo bài viết mới</a>
+        <div class="well">
+            <h3>Tiêu đề: {{$post->title}}</a></h3>
+            <small>Tạo vào lúc: {{$post->created_at}}</small>
+            <h5>Thể Loại: {{$post->tag->name}}</h5>
+            <h5>Tóm Tắt: {{$post->summary}}</h5>
+            <h5>Nội Dung: <br><br>
+                <p>{{$post->content}}</p></h5>
         </div>
-        <!-- /.box-body -->
         <div class="box-footer">
 
         </div>

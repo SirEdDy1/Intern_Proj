@@ -40,11 +40,16 @@ Route::group([
     Route::get('admin/post', 'AdminController@managepost');
     Route::get('admin/post/{id}', 'AdminController@editpost');
     Route::get('admin/contact', 'AdminController@managecontact');
-    Route::get('admin/contact/{id}','AdminController@show')->name('admin.contact.detail');
+    Route::get('admin/contact/{id}','AdminController@showcontact')->name('admin.contact.detail');
+    Route::get('admin/post/{id}','AdminController@showpost')->name('admin.post.detail');
     Route::post('admin/gallery','AdminController@admin_image_post')->name('admin.image.post');
-    Route::post('admin/gallery/{id}','AdminController@delete')->name('delete');
+    Route::post('admin/gallery/{id}','AdminController@deletepicture')->name('deletepicture');
+    Route::post('admin/post/{id}','AdminController@deletepost')->name('deletepost');
+    Route::post('admin/contact/{id}','AdminController@deletecontact')->name('deletecontact');
     Route::get('admin/createpost','AdminController@createpost');
     Route::post('admin/post','AdminController@admin_post_create')->name('admin.post.create');
+    Route::get('admin/post/{id}/edit','AdminController@editpost');
+    Route::post('admin/post/{id}/edit','AdminController@editpost')->name('admin.post.edit');
 
     Route::resource('contacts','AdminController');
 });

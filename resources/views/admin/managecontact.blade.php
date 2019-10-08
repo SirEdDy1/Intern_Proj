@@ -269,8 +269,11 @@
                     <div class="well">
                     <h3><a href="/admin/contact/{{$contact->id}}">{{$contact->name}}</a></h3>
                     <small>Gửi vào lúc{{$contact->created_at}}</small>
-                    <h5>Email: {{$contact->email}}</h5>
-                    </div>
+                    <form action="{{route('deletecontact', $contact->id)}}" method="POST">
+                            @csrf
+                            <input type="submit" value="Xóa Thư!">
+                        </form>
+                </div>
                 @endforeach
             @else
             <div class="box-body">

@@ -8,6 +8,7 @@ use App\Picture;
 use App\Contact;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 
 class AdminController extends Controller
 {
@@ -18,6 +19,7 @@ class AdminController extends Controller
          $tags = Tag::all();
          return view('admin.createpost')->with('tags',$tags);
     }
+
     function login(){
         return view('admin.login');
     }
@@ -30,7 +32,8 @@ class AdminController extends Controller
          return view('admin.managepost')->with('posts',$posts);
     }
     function editpost(){
-        return view('admin.editpost');
+        $tags = Tag::all();
+        return view('admin.editpost')->with('tags',$tags);
     }
     function managedocument(){
         return view('admin.managedocument');
@@ -39,10 +42,16 @@ class AdminController extends Controller
         $contacts = Contact::orderBy('created_at','desc')->paginate(10);
         return view('admin.managecontact')->with('contacts', $contacts);
     }
-    public function show($id){
+    public function showcontact($id){
         $contact = Contact::find($id);
         return view('admin.showcontact', [
             'contact' => $contact
+        ]);
+    }
+    public function showpost($id){
+        $post = Post::find($id);
+        return view('admin.showpost', [
+            'post' => $post
         ]);
     }
     public function admin_image_post(Request $request){
@@ -68,11 +77,28 @@ class AdminController extends Controller
         return redirect('/admin/gallery');
     }
 
-    public function delete($id){
+    public function deletepicture($id){
         $picture = Picture::find($id);
         $picture->delete();
+        Storage::delete('public/uploads/gallerypictures'.$picture->image);
 
         return redirect('admin/gallery')->with('success','Xóa ảnh thành công');
+    }
+    public function deletepost($id){
+        $post = Post::find($id);
+        if($post->cover != 'noimage.jpg'){
+            // Delete Image
+            Storage::delete('public/uploads/postcovers'.$post->cover);
+        }
+        $post->delete();
+
+        return redirect('admin/post')->with('success','Xóa bài viết thành công');
+    }
+    public function deletecontact($id){
+        $contact = Contact::find($id);
+        $contact->delete();
+
+        return redirect('admin/contact')->with('success','Xóa thư thành công');
     }
     public function admin_post_create(Request $request){
         $this->validate($request,[
@@ -80,27 +106,65 @@ class AdminController extends Controller
             'body' => 'required',
             'summary' => 'required',
             'tag' => 'required',
-//            'cover' => 'image|required|max:2048',
+            'cover' => 'image|nullable|max:2048',
         ]);
+
+        if($request->hasFile('cover')){
+            // Get filename with the extension
+            $filenameWithExt = $request->file('cover')->getClientOriginalName();
+            // Get just filename
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            // Get just ext
+            $extension = $request->file('cover')->getClientOriginalExtension();
+            // Filename to store
+            $fileNameToStore= $filename.'_'.time().'.'.$extension;
+            // Upload Image
+            $path = $request->file('cover')->storeAs('public/uploads/postcovers', $fileNameToStore);
+        } else {
+            $fileNameToStore = 'noimage.jpg';
+        }
 
         $post = new Post;
         $post->title = $request->input('title');
         $post->content = $request->input('body');
         $post->tag_id = $request->input('tag');
         $post->summary = $request->input('summary');
+        $post->cover = $fileNameToStore;
 
-        if($request->hasfile('cover')){
-            $file =$request->file('cover');
-            $extension = $file->getClientOriginalExtension();
-            $filename = time() . '.' . $extension;
-            $file->move('uploads/postcovers',$filename);
-            $post->cover = $filename;
+        $post->save();
+        return redirect('/admin/post');
+    }
+    public function admin_post_edit(Request $request, $id){
+        $this->validate($request,[
+            'title' => 'required',
+            'body' => 'required',
+            'summary' => 'required',
+            'tag' => 'required',
+        ]);
+
+        if($request->hasFile('cover')){
+            // Get filename with the extension
+            $filenameWithExt = $request->file('cover')->getClientOriginalName();
+            // Get just filename
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            // Get just ext
+            $extension = $request->file('cover')->getClientOriginalExtension();
+            // Filename to store
+            $fileNameToStore= $filename.'_'.time().'.'.$extension;
+            // Upload Image
+            $path = $request->file('cover')->storeAs('public/uploads/postcovers', $fileNameToStore);
+        } else {
+            $fileNameToStore = 'noimage.jpg';
         }
-        else{
-            return $request;
-            $post->cover = '';
-        }
-        dd($post->save());
-        return redirect('/admin/managepost');
+
+        $post = Post::find($id);
+        $post->title = $request->input('title');
+        $post->content = $request->input('body');
+        $post->tag_id = $request->input('tag');
+        $post->summary = $request->input('summary');
+        $post->cover = $fileNameToStore;
+
+        $post->save();
+        return redirect('/admin/post');
     }
 }
