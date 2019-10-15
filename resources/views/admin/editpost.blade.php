@@ -276,21 +276,20 @@
                     </div>
                 </div>
                 <div class="box-body">
-                    <form action="{{route('admin.post.edit')}}" enctype="multipart/form-data" method="POST">
+                    <form action="{{route('admin.post.edit', $post->id)}}" enctype="multipart/form-data" method="POST">
                         @csrf
                         Tiêu Đề (bắt buộc)<br>
-                        <input type="text" name="title"  size="80">
+                    <input type="text" name="title"  size="80" value="{{$post->title}}">
                         <br><br>
                         Tóm Tắt<br>
-                        <input type="text" name="summary"  size="80">
+                        <input type="text" name="summary"  size="80" value="{{$post->summary}}">
                         <br><br>
                         Nội Dung<br>
-                        <textarea type="text" name="body" rows="8" cols="100"></textarea>
+                        <textarea type="text" name="body" rows="8" cols="100">{{$post->content}}</textarea>
                         <br><br>
                         <label class="custom-file-label">Chọn Ảnh</label>
-                        <input type="file" class="custom-file-input" size='100' name="cover">
+                    <input type="file" class="custom-file-input" size='100' name="cover">
                         <br><br>
-
                         <div class="dropdown">
                             <button type="button" class="btn btn-primary dropdown-toggle"
                                     data-toggle="dropdown">
@@ -299,7 +298,7 @@
                             <div class="dropdown-menu">
                                 @if(count($tags) > 0)
                                     @foreach($tags as $tag)
-                                        <input type="radio" name="tag" value="{{$tag->id}}">{{$tag->name}}<br>
+                                        <input type="radio" name="tag" {{$tag->id == $post->tag_id ? 'checked' : ''}} value="{{$tag->id}}">{{$tag->name}}<br>
                                     @endforeach
                                 @else
                                     Khong co Tag

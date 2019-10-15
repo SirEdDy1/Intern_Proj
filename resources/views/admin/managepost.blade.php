@@ -279,6 +279,8 @@
                                 <br>
                             <a href="/admin/post/{{$post->id}}/edit" class="btn btn-default">Sửa bài</a>
                     </div>
+                </div>
+            </div>
             @endforeach
           @else
             <div class="box-body">

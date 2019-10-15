@@ -3,17 +3,19 @@
 @push('custom-css')
     <style>
 div.gallery {
-    margin: 5px;
     border: 1px solid #ccc;
-    float: left;
-    width: 360px;
+    width: 400px;
+    height: 300px;
 }
 div.gallery:hover {
     border: 1px solid #777;
 }
 div.gallery img {
     width: 100%;
-    height: auto;
+    height: 100%;
+    object-fit: fill;
+    object-position: 50% 50%;
+
 }
 div.desc {
     padding: 15px;
@@ -24,20 +26,20 @@ div.desc {
 
 @section('content')
 
-<div class="gallery">
+<div class="row">
     @if(count($pictures) > 0)
-    @foreach ($pictures as $picture)
-    <a target="_blank">
-      <img src="{{URL::asset('/uploads/gallerypictures/' . $picture->image)}}" alt="" width="400" height="300">
-    </a>
-    <div class="desc">{{$picture->title}}</div>
-  </div>
-  @endforeach
- @else
- <div class="box-body">
-    Thư viện ảnh trống!!
-  </div>
-    <div class="col"></div>
+        @foreach ($pictures as $picture)
+            <div class="gallery col-4">
+                <a target="_blank">
+                    <img src="{{URL::asset('/uploads/gallerypictures/' . $picture->image)}}" alt="">
+                </a>
+                <div class="desc">{{$picture->title}}</div>
+            </div>
+        @endforeach
+    @else
+        <div class="box-body">
+            Thư viện ảnh trống!!
+        </div>
+    @endif
 </div>
-@endif
 @endsection

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\guest;
 
+use App\Post;
 use App\Picture;
 use App\Contact;
 use Illuminate\Http\Request;
@@ -16,7 +17,11 @@ class GuestController extends Controller
         return view('guest.about');
     }
     function news(){
-        return view('guest.news');
+        // $posts = Post::with('tag')->whereHas('tag', function($query) {
+        //     $query->where('id', 1);
+        // })->orderBy('created_at','desc');
+        $posts = Post::with('tag')->where('tag_id', 1)->orderBy('created_at','desc')->paginate(3);
+        return view('guest.news')->with('posts',$posts);
     }
     function activity(){
         return view('guest.activity');

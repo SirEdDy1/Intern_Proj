@@ -31,9 +31,13 @@ class AdminController extends Controller
         $posts = Post::orderBy('created_at','desc')->paginate(10);
          return view('admin.managepost')->with('posts',$posts);
     }
-    function editpost(){
+    function editpost($id){
+        $post = Post::find($id);
         $tags = Tag::all();
-        return view('admin.editpost')->with('tags',$tags);
+        return view('admin.editpost', [
+            'tags'=>$tags,
+            'post'=>$post,
+        ]);
     }
     function managedocument(){
         return view('admin.managedocument');
@@ -109,27 +113,23 @@ class AdminController extends Controller
             'cover' => 'image|nullable|max:2048',
         ]);
 
-        if($request->hasFile('cover')){
-            // Get filename with the extension
-            $filenameWithExt = $request->file('cover')->getClientOriginalName();
-            // Get just filename
-            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-            // Get just ext
-            $extension = $request->file('cover')->getClientOriginalExtension();
-            // Filename to store
-            $fileNameToStore= $filename.'_'.time().'.'.$extension;
-            // Upload Image
-            $path = $request->file('cover')->storeAs('public/uploads/postcovers', $fileNameToStore);
-        } else {
-            $fileNameToStore = 'noimage.jpg';
-        }
+
 
         $post = new Post;
         $post->title = $request->input('title');
         $post->content = $request->input('body');
         $post->tag_id = $request->input('tag');
         $post->summary = $request->input('summary');
-        $post->cover = $fileNameToStore;
+
+        if($request->hasFile('cover')){
+            $file =$request->file('cover');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time() . '.' . $extension;
+            $file->move('uploads/postcovers',$filename);
+            $post->cover = $filename;
+        } else {
+            $post->cover = 'noimage.jpg';
+        }
 
         $post->save();
         return redirect('/admin/post');
@@ -143,18 +143,11 @@ class AdminController extends Controller
         ]);
 
         if($request->hasFile('cover')){
-            // Get filename with the extension
-            $filenameWithExt = $request->file('cover')->getClientOriginalName();
-            // Get just filename
-            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-            // Get just ext
-            $extension = $request->file('cover')->getClientOriginalExtension();
-            // Filename to store
-            $fileNameToStore= $filename.'_'.time().'.'.$extension;
-            // Upload Image
-            $path = $request->file('cover')->storeAs('public/uploads/postcovers', $fileNameToStore);
-        } else {
-            $fileNameToStore = 'noimage.jpg';
+            $file =$request->file('cover');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time() . '.' . $extension;
+            $file->move('uploads/postcovers',$filename);
+
         }
 
         $post = Post::find($id);
@@ -162,7 +155,9 @@ class AdminController extends Controller
         $post->content = $request->input('body');
         $post->tag_id = $request->input('tag');
         $post->summary = $request->input('summary');
-        $post->cover = $fileNameToStore;
+        if($request->hasFile('cover')){
+            $post->cover = $filename;
+        }
 
         $post->save();
         return redirect('/admin/post');

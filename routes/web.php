@@ -49,7 +49,7 @@ Route::group([
     Route::get('admin/createpost','AdminController@createpost');
     Route::post('admin/post','AdminController@admin_post_create')->name('admin.post.create');
     Route::get('admin/post/{id}/edit','AdminController@editpost');
-    Route::post('admin/post/{id}/edit','AdminController@editpost')->name('admin.post.edit');
+    Route::post('admin/post/{id}/edit','AdminController@admin_post_edit')->name('admin.post.edit');
 
     Route::resource('contacts','AdminController');
 });
