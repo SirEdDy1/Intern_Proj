@@ -220,18 +220,18 @@
 
         <li class="treeview">
           <a href="/admin/post">
-            <i class="fa fa-book-open"></i> <span>Quản lý bài viết</span>
+            <i class="fa fa-book"></i> <span>Quản lý bài viết</span>
           </a>
         </li>
         <li class="treeview">
-            <a href="/admin/gallery">
-              <i class="fa fa-images"></i> <span>Quản lý ảnh</span>
-            </a>
+          <a href="/admin/gallery">
+            <i class="fa fa-picture-o"></i> <span>Quản lý ảnh</span>
+          </a>
         </li>
         <li class="treeview">
-            <a href="/admin/contact">
-              <i class="fa fa-images"></i> <span>Quản lý liên lạc</span>
-            </a>
+          <a href="/admin/contact">
+            <i class="fa fa-phone"></i> <span>Quản lý liên lạc</span>
+          </a>
         </li>
       </ul>
     </section>
@@ -266,7 +266,7 @@
 
         </div>
         <div class="well">
-            <h3>Tiêu đề: {{$post->title}}</a></h3>
+            <h3>Tiêu đề: {{$post->title}}</h3>
             <small>Tạo vào lúc: {{$post->created_at}}</small>
             <h5>Thể Loại: {{$post->tag->name}}</h5>
             <h5>Tóm Tắt: {{$post->summary}}</h5>

@@ -300,7 +300,7 @@
         </div>
         <!-- /.box-body -->
         <div class="box-footer">
-          Footer
+          {{ $pictures->links() }}
         </div>
         <!-- /.box-footer-->
       </div>

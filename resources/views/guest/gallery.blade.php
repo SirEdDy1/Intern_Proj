@@ -6,6 +6,7 @@ div.gallery {
     border: 1px solid #ccc;
     width: 400px;
     height: 300px;
+    padding: 1.5rem;
 }
 div.gallery:hover {
     border: 1px solid #777;
@@ -17,9 +18,13 @@ div.gallery img {
     object-position: 50% 50%;
 
 }
-div.desc {
-    padding: 15px;
+.desc {
     text-align: center;
+}
+.navigation{
+    padding-left: 30rem;
+    padding-top: 1rem;
+    position: relative;
 }
     </style>
 @endpush
@@ -33,7 +38,7 @@ div.desc {
                 <a target="_blank">
                     <img src="{{URL::asset('/uploads/gallerypictures/' . $picture->image)}}" alt="">
                 </a>
-                <div class="desc">{{$picture->title}}</div>
+                <p class="desc">{{$picture->title}}</p>
             </div>
         @endforeach
     @else
@@ -41,5 +46,8 @@ div.desc {
             Thư viện ảnh trống!!
         </div>
     @endif
+</div>
+<div class="navigation">
+    {{ $pictures->links() }}
 </div>
 @endsection

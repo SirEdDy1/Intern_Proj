@@ -223,17 +223,17 @@
 
                 <li class="treeview">
                     <a href="/admin/post">
-                        <i class="fa fa-book-open"></i> <span>Quản lý bài viết</span>
+                        <i class="fa fa-book"></i> <span>Quản lý bài viết</span>
                     </a>
                 </li>
                 <li class="treeview">
                     <a href="/admin/gallery">
-                        <i class="fa fa-images"></i> <span>Quản lý ảnh</span>
+                        <i class="fa fa-picture-o"></i> <span>Quản lý ảnh</span>
                     </a>
                 </li>
                 <li class="treeview">
                     <a href="/admin/contact">
-                        <i class="fa fa-images"></i> <span>Quản lý liên lạc</span>
+                        <i class="fa fa-phone"></i> <span>Quản lý liên lạc</span>
                     </a>
                 </li>
             </ul>

@@ -211,27 +211,28 @@
       <!-- /.search form -->
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu">
-        <li class="header">Danh Sách</li>
-        <li class="treeview">
-          <a href="/admin/document">
-            <i class="fa fa-folder"></i> <span>Quản lý tài liệu</span>
-          </a>
-        </li>
+          <li class="header">Danh Sách</li>
+          <li class="treeview">
+              <a href="/admin/document">
+                  <i class="fa fa-folder"></i> <span>Quản lý tài liệu</span>
+              </a>
+          </li>
 
-        <li class="treeview">
-          <a href="/admin/post">
-            <i class="fa fa-book-open"></i> <span>Quản lý bài viết</span>
-          </a>
-        </li>
-        <li class="treeview">
-            <a href="/admin/gallery">
-              <i class="fa fa-images"></i> <span>Quản lý ảnh</span>
-            </a>
-        </li>
-        <li class="treeview">
-            <a href="/admin/contact">
-              <i class="fa fa-images"></i> <span>Quản lý liên lạc</span>
-        </li>
+          <li class="treeview">
+              <a href="/admin/post">
+                  <i class="fa fa-book"></i> <span>Quản lý bài viết</span>
+              </a>
+          </li>
+          <li class="treeview">
+              <a href="/admin/gallery">
+                  <i class="fa fa-picture-o"></i> <span>Quản lý ảnh</span>
+              </a>
+          </li>
+          <li class="treeview">
+              <a href="/admin/contact">
+                  <i class="fa fa-phone"></i> <span>Quản lý liên lạc</span>
+              </a>
+          </li>
       </ul>
     </section>
     <!-- /.sidebar -->

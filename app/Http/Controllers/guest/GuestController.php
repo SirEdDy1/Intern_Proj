@@ -24,16 +24,18 @@ class GuestController extends Controller
         return view('guest.news')->with('posts',$posts);
     }
     function activity(){
-        return view('guest.activity');
+        $posts = Post::with('tag')->where('tag_id', 2)->orderBy('created_at','desc')->paginate(3);
+        return view('guest.activity')->with('posts',$posts);
     }
     function schedule(){
-        return view('guest.schedule');
+        $posts = Post::with('tag')->where('tag_id', 3)->orderBy('created_at','desc')->paginate(3);
+        return view('guest.schedule')->with('posts',$posts);
     }
     function contact(){
         return view('guest.contact');
     }
     function gallery(){
-        $pictures = Picture::orderBy('created_at','desc')->paginate(10);
+        $pictures = Picture::orderBy('created_at','desc')->paginate(9);
         return view('guest.gallery')->with('pictures',$pictures);
     }
     public function contact_post(Request $request){
