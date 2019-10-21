@@ -28,8 +28,8 @@
             align-items: center;
         }
         .picbox > img{
-            width: 80%;
-            height: 80%;
+            width: 100%;
+            height: 100%;
             object-fit: cover;
             object-position: center;
         }
@@ -61,6 +61,9 @@
             height: 100%;
             object-position: center;
         }
+        .row{
+            margin-left: 0;
+        }
     </style>
 @endpush
 
@@ -71,21 +74,17 @@
         </div>
         <div class="features">
             <div class="row m-0">
+                @if(count($featuredposts) > 0)
+                    @foreach ($featuredposts as $featuredpost)
                 <div class="col-3">
-                    <div class="row"><h5>Lorem ipsum dolor sit amet.</h5></div>
-                    <div class="row picbox"><img src="{{URL::asset('/pic/TranPhu.jpg')}}" alt=""></div>
-                    <div class="row">Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt, in.</div>
+                    <div class="row"><h5><a href="/post/{{$featuredpost->id}}">{{$featuredpost->title}}</a></h5></div>
+                    <div class="row picbox"><img src="{{URL::asset('/uploads/postcovers/'. $featuredpost->cover)}}" alt=""></div>
+                    <div class="row"><small>Ngày đăng:{{$featuredpost->created_at}}</small>{{$featuredpost->summary}}</div>
                 </div>
-                <div class="col-3">
-                    <div class="row"><h5>Lorem ipsum dolor sit amet.</h5></div>
-                    <div class="row picbox"><img src="{{URL::asset('/pic/TranPhu.jpg')}}" alt=""></div>
-                    <div class="row">Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt, in.</div>
-                </div>
-                <div class="col-3">
-                    <div class="row"><h5>Lorem ipsum dolor sit amet.</h5></div>
-                    <div class="row picbox"><img src="{{URL::asset('/pic/TranPhu.jpg')}}" alt=""></div>
-                    <div class="row">Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt, in.</div>
-                </div>
+                @endforeach
+                @else
+                    Không có bài viết nào!!
+                @endif
                 <div class="col-3">
                     <div class="row bigbox"><img src="{{URL::asset('/pic/TranPhu.jpg')}}" alt=""></div>
                     <div class="row">
@@ -96,11 +95,15 @@
                 </div>
             </div>
         <div class="other">
-            <h5>Tin tiêu điểm</h5>
+            <h5>Tin cũ hơn</h5>
             <ul>
-                <li>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laudantium, maxime.</li>
-                <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat earum doloremque sit ex praesentium recusandae?</li>
-                <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam.</li>
+                @if(count($listposts) > 0)
+                    @foreach ($listposts as $listpost)
+                <li><a href="/post/{{$listpost->id}}">{{$listpost->title}}</a></li>
+                    @endforeach
+                @else
+                    Không có bài viết nào!!
+                @endif
             </ul>
         </div>
     </div>

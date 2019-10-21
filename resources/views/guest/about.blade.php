@@ -30,17 +30,11 @@
     <div class="container m-0">
       <div class="row">
           <div class="col">
-              <h4>Giới thiệu</h4>
-              <ul>
-                  <li><i class="material-icons">menu_book</i>Lorem ipsum dolor sit amet.</li>
-                  <li><i class="material-icons">menu_book</i>Lorem ipsum dolor sit amet.</li>
-                  <li><i class="material-icons">menu_book</i>Lorem ipsum dolor sit amet.</li>
-              </ul>
               <h4>Văn bản</h4>
               <ul>
-                  <li><i class="material-icons">menu_book</i>Lorem ipsum dolor sit amet.</li>
-                  <li><i class="material-icons">menu_book</i>Lorem ipsum dolor sit amet.</li>
-                  <li><i class="material-icons">menu_book</i>Lorem ipsum dolor sit amet.</li>
+                  <li><i class="material-icons">menu_book</i><a href="">Đơn xin đăng ký dạy thêm</a></li>
+                  <li><i class="material-icons">menu_book</i><a href="">Phiếu đánh giá cuối năm học</a></li>
+                  <li><i class="material-icons">menu_book</i><a href="">Kế hoạch tổ chức</a></li>
               </ul>
           </div>
           <div class="col-6">
@@ -59,9 +53,9 @@
           <div class="col">
               <h4>Liên hệ</h4>
               <ul>
-                  <li><i class="material-icons">menu_book</i>Lorem ipsum dolor sit amet.</li>
-                  <li><i class="material-icons">menu_book</i>Lorem ipsum dolor sit amet.</li>
-                  <li><i class="material-icons">menu_book</i>Lorem ipsum dolor sit amet.</li>
+                  <li><i class="material-icons">perm_device_information</i><a href="">SỔ ĐIỆN TỬ</a><br><small>Kết nối nhà trường và phụ huynh</small></li>
+                  <li><i class="material-icons">perm_identity</i><a href="">QUẢN LÝ GIÁO VIÊN</a><br><small>Tra cứu danh sách giáo viên</small></li>
+                  <li><i class="material-icons">folder_shared</i><a href="">DOWNLOAD PHẦN MỀM</a><br><small>Hỗ trợ giảng dạy học tập</small></li>
               </ul>
           </div>
       </div>

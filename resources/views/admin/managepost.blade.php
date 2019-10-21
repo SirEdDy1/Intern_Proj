@@ -272,6 +272,8 @@
                     <div class="col-md-8 col-sm-8">
                             <h3><a href="/admin/post/{{$post->id}}">{{$post->title}}</a></h3>
                             <small>Gửi vào lúc{{$post->created_at}}</small>
+                      <br>
+                            <small>Thể loại: {{$post->tag_id}}</small>
                             <form action="{{route('deletepost', $post->id)}}" method="POST">
                                     @csrf
                                     <input type="submit" value="Xóa bài!" class="btn btn-default">

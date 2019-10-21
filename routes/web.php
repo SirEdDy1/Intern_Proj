@@ -26,6 +26,7 @@ Route::group([
     Route::get('/contact', 'GuestController@contact');
     Route::get('/gallery', 'GuestController@gallery');
     Route::post('/contact', 'GuestController@contact_post')->name('contact.post');
+    Route::get('/post/{id}','GuestController@showpost')->name('showpost');
 });
 
 

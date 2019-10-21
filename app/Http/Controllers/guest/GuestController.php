@@ -11,7 +11,14 @@ use App\Http\Controllers\Controller;
 class GuestController extends Controller
 {
     function home(){
-        return view('guest.home');
+        $featuredposts = Post::orderBy('created_at','desc')->paginate(3);
+        $listposts = Post::orderBy('created_at','asc')->paginate(3);
+        $carouselitems = Picture::orderBy('created_at','desc')->paginate(3);
+        return view('guest.home',[
+            'featuredposts' => $featuredposts,
+            'listposts' => $listposts,
+            'carouselitems' => $carouselitems,
+        ]);
     }
     function about(){
         return view('guest.about');
@@ -20,16 +27,28 @@ class GuestController extends Controller
         // $posts = Post::with('tag')->whereHas('tag', function($query) {
         //     $query->where('id', 1);
         // })->orderBy('created_at','desc');
-        $posts = Post::with('tag')->where('tag_id', 1)->orderBy('created_at','desc')->paginate(3);
-        return view('guest.news')->with('posts',$posts);
+        $primepost = Post::with('tag')->where('tag_id', 1)->orderBy('created_at','desc')->first();
+        $listposts = Post::with('tag')->where('tag_id', 1)->orderBy('created_at','desc')->paginate(3);
+        return view('guest.news',[
+            'primepost' => $primepost,
+            'listposts' => $listposts,
+        ]);
     }
     function activity(){
-        $posts = Post::with('tag')->where('tag_id', 2)->orderBy('created_at','desc')->paginate(3);
-        return view('guest.activity')->with('posts',$posts);
+        $primepost = Post::with('tag')->where('tag_id', 2)->orderBy('created_at','desc')->first();
+        $listposts = Post::with('tag')->where('tag_id', 2)->orderBy('created_at','desc')->paginate(3);
+        return view('guest.activity',[
+            'primepost' => $primepost,
+            'listposts' => $listposts,
+        ]);
     }
     function schedule(){
-        $posts = Post::with('tag')->where('tag_id', 3)->orderBy('created_at','desc')->paginate(3);
-        return view('guest.schedule')->with('posts',$posts);
+        $primepost = Post::with('tag')->where('tag_id', 3)->orderBy('created_at','desc')->first();
+        $listposts = Post::with('tag')->where('tag_id', 3)->orderBy('created_at','desc')->paginate(3);
+        return view('guest.schedule',[
+            'primepost' => $primepost,
+            'listposts' => $listposts,
+        ]);
     }
     function contact(){
         return view('guest.contact');
@@ -38,6 +57,15 @@ class GuestController extends Controller
         $pictures = Picture::orderBy('created_at','desc')->paginate(9);
         return view('guest.gallery')->with('pictures',$pictures);
     }
+    public function showpost($id){
+        $post = Post::find($id);
+        return view('guest.display', [
+            'post' => $post
+        ]);
+    }
+
+
+
     public function contact_post(Request $request){
         $this->validate($request,[
             'name' => 'required',

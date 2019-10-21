@@ -31,6 +31,9 @@
         .schedule > p{
             font-size: 70%;
         }
+        .summary > p{
+            font-style: italic;
+        }
 
 
 
@@ -56,10 +59,15 @@
                     <li><i class="material-icons">menu_book</i>Lorem ipsum dolor sit amet.</li>
                 </ul>
             </div>
-            <div class="col-5 schedule">
-                <h5>Title Goes Here</h5>
+            <div class="col-6 schedule">
+                <h3>{{$post->title}}</h3>
+                <img src="{{URL::asset('/uploads/postcovers/'. $post->cover)}}" alt="" width="500px" height="350px">
                 <div>
-                    Contents Go here
+                    <div class="summary">
+                        <p>{{$post->summary}}</p>
+                    </div>
+                    <small>Ngày đăng: {{$post->created_at}}</small>
+                    <p>{{$post->content}}</p>
                 </div>
             </div>
             <div class="col">

@@ -21,6 +21,8 @@
         .featured > img{
             object-fit: cover;
             object-position: center;
+            width: 100%;
+            height: 100%;
         }
         header{
             background: #343A40;
@@ -62,9 +64,6 @@
             object-fit: cover;
             object-position: center;
         }
-        .ext-name{
-            font-weight: bold;
-        }
     </style>
 @endpush
 
@@ -73,78 +72,53 @@
     <div class="container m-0">
       <div class="row">
           <div class="col">
-              <h4>Giới thiệu</h4>
-              <ul>
-                  <li><i class="material-icons">menu_book</i>Lorem ipsum dolor sit amet.</li>
-                  <li><i class="material-icons">menu_book</i>Lorem ipsum dolor sit amet.</li>
-                  <li><i class="material-icons">menu_book</i>Lorem ipsum dolor sit amet.</li>
-              </ul>
               <h4>Văn bản</h4>
               <ul>
-                  <li><i class="material-icons">menu_book</i>Lorem ipsum dolor sit amet.</li>
-                  <li><i class="material-icons">menu_book</i>Lorem ipsum dolor sit amet.</li>
-                  <li><i class="material-icons">menu_book</i>Lorem ipsum dolor sit amet.</li>
+                  <li><i class="material-icons">menu_book</i><a href="">Đơn xin đăng ký dạy thêm</a></li>
+                  <li><i class="material-icons">menu_book</i><a href="">Phiếu đánh giá cuối năm học</a></li>
+                  <li><i class="material-icons">menu_book</i><a href="">Kế hoạch tổ chức</a></li>
               </ul>
           </div>
           <div class="col-5">
+
               <div class="featured">
-                <img src="{{URL::asset('/pic/schoolgate.jpg')}}" alt="">
+                <img src="{{URL::asset('/uploads/postcovers/'. $primepost->cover)}}" alt="">
               </div>
-              Ngày 24/09/2019
-                <h4>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, numquam?</h4>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta, porro unde nam repellendus aspernatur deserunt!</p>
+              <h4><a href="/post/{{$primepost->id}}">{{$primepost->title}}</a></h4>
+              <small>Ngày đăng: {{$primepost->created_at}}</small>
+              <p>{{$primepost->summary}}</p>
                 <div>
                     <header class="border-bottom">
                         <h4><i class="material-icons">bookmark</i>Tin Mới</h4>
+                        @if(count($listposts) > 0)
+                            @foreach ($listposts as $listpost)
                     </header>
                         <section>
                             <ul>
                                 <li>
                                     <div class="newspic">
-                                        <img src="{{URL::asset('/pic/schoolgate.jpg')}}" alt="">
+                                        <img src="{{URL::asset('/uploads/postcovers/'. $listpost->cover)}}" alt="">
                                     </div>
                                     <div class="ext-right">
-                                        <a class="ext-name" href="#">Lorem ipsum dolor sit amet.</a>
-                                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellat unde dolores velit dolorem quae consectetur repellendus. Quis corporis autem mollitia.</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="newspic">
-                                        <img src="{{URL::asset('/pic/schoolgate.jpg')}}" alt="">
-                                    </div>
-                                    <div class="ext-right">
-                                        <a class="ext-name" href="#">Lorem ipsum dolor sit amet.</a>
-                                        <p class="ext-intro">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellat unde dolores velit dolorem quae consectetur repellendus. Quis corporis autem mollitia.</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="newspic">
-                                        <img src="{{URL::asset('/pic/schoolgate.jpg')}}" alt="">
-                                    </div>
-                                    <div class="ext-right">
-                                        <a class="ext-name" href="#">Lorem ipsum dolor sit amet.</a>
-                                        <p class="ext-intro">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellat unde dolores velit dolorem quae consectetur repellendus. Quis corporis autem mollitia.</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="newspic">
-                                        <img src="{{URL::asset('/pic/schoolgate.jpg')}}" alt="">
-                                    </div>
-                                    <div class="ext-right">
-                                        <a class="ext-name" href="#">Lorem ipsum dolor sit amet.</a>
-                                        <p class="ext-intro">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellat unde dolores velit dolorem quae consectetur repellendus. Quis corporis autem mollitia.</p>
+                                        <h5><a href="/post/{{$listpost->id}}">{{$listpost->title}}</a></h5>
+                                        <p>{{$listpost->summary}}</p>
                                     </div>
                                 </li>
                             </ul>
                          </section>
                  </div>
+                  @endforeach
+              @else
+                      Không có bài viết nào!!
           </div>
+          @endif
+
           <div class="col">
               <h4>Liên hệ</h4>
               <ul>
-                  <li><i class="material-icons">menu_book</i>Lorem ipsum dolor sit amet.</li>
-                  <li><i class="material-icons">menu_book</i>Lorem ipsum dolor sit amet.</li>
-                  <li><i class="material-icons">menu_book</i>Lorem ipsum dolor sit amet.</li>
+                  <li><i class="material-icons">perm_device_information</i><a href="">SỔ ĐIỆN TỬ</a><br><small>Kết nối nhà trường và phụ huynh</small></li>
+                  <li><i class="material-icons">perm_identity</i><a href="">QUẢN LÝ GIÁO VIÊN</a><br><small>Tra cứu danh sách giáo viên</small></li>
+                  <li><i class="material-icons">folder_shared</i><a href="">DOWNLOAD PHẦN MỀM</a><br><small>Hỗ trợ giảng dạy học tập</small></li>
               </ul>
           </div>
       </div>
