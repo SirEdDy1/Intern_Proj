@@ -4,8 +4,8 @@
     <style>
 div.gallery {
     border: 1px solid #ccc;
-    width: 400px;
-    height: 300px;
+    width: 25rem;
+    height: 18.75rem;
     padding: 1.5rem;
 }
 div.gallery:hover {

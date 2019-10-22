@@ -12,7 +12,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            max-height: 250px;
+            max-height: 15.625rem;
             overflow: hidden;
             margin-top: 1.5rem;
             margin-bottom: 1.5rem;
@@ -27,7 +27,7 @@
         header{
             background: #343A40;
             color: white;
-            padding: 5px
+            padding: 0.3125rem;
 
         }
         ul {
@@ -51,7 +51,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            max-height: 125px;
+            max-height: 7.8125rem;
             overflow: hidden;
             margin-top: 1.5rem;
             margin-bottom: 1.5rem;

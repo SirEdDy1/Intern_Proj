@@ -12,7 +12,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            max-height: 400px;
+            max-height: 25rem;
             overflow: hidden;
             margin-top: 1.5rem;
             margin-bottom: 1.5rem;

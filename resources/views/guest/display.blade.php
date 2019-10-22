@@ -9,7 +9,7 @@
         header{
             background: #343A40;
             color: white;
-            padding: 5px
+            padding: 0.3125rem
 
         }
         ul {
@@ -25,7 +25,7 @@
             content: ""; /* Insert content that looks like bullets */
         }
         .schedule{
-            padding-top: 5px;
+            padding-top: 0.3125rem;
             padding-left: 0;
         }
         .schedule > p{

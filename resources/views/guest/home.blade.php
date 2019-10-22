@@ -8,21 +8,21 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            max-height: 400px;
+            max-height: 25rem;
             overflow: hidden;
             margin-top: 1.5rem;
             margin-bottom: 1.5rem;
         }
 
         .homepic > img{
-            width: 80%;
-            height: 80%;
+            width: 100%;
+            height: 100%;
             object-fit: cover;
             object-position: center;
         }
         .picbox{
-            width: 250px;
-            height: 150px;
+            width: 15.265rem;
+            height: 9.375rem;
             overflow: hidden;
             justify-content: center;
             align-items: center;
@@ -38,8 +38,8 @@
             padding-top: 3rem;
         }
         .bigbox{
-            width: 300px;
-            height: 200px;
+            width: 18.75rem;
+            height: 12.5rem;
             overflow: hidden;
             justify-content: center;
             align-items: center;
@@ -85,13 +85,28 @@
                 @else
                     Không có bài viết nào!!
                 @endif
-                <div class="col-3">
-                    <div class="row bigbox"><img src="{{URL::asset('/pic/TranPhu.jpg')}}" alt=""></div>
-                    <div class="row">
-                        <div class="col-4 smallbox"><img src="{{URL::asset('/pic/schoolgate.jpg')}}" alt=""></div>
-                        <div class="col-4 smallbox"><img src="{{URL::asset('/pic/TranPhu.jpg')}}" alt=""></div>
-                        <div class="col-4 smallbox"><img src="{{URL::asset('/pic/TranPhu.jpg')}}" alt=""></div>
-                    </div>
+                <div class="col-3 carouselgallery">
+                    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                        @if(count($carouselitems) >0)
+                            @foreach($carouselitems as $carouselitem)
+                        <div class="carousel-inner">
+                          <div class="carousel-item active">
+                            <img class="d-block w-100" src="{{URL::asset('/uploads/gallerypictures/' . $carouselitem->image)}}" alt="First slide">
+                          </div>
+                        </div>
+                        @endforeach
+                        @else
+                            Không có ảnh
+                        @endif
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                          <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                          <span class="sr-only">Next</span>
+                        </a>
+                      </div>
                 </div>
             </div>
         <div class="other">
