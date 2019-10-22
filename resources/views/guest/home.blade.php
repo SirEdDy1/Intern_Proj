@@ -27,7 +27,7 @@
             justify-content: center;
             align-items: center;
         }
-        .picbox > img{
+        .picbox > a > img{
             width: 100%;
             height: 100%;
             object-fit: cover;
@@ -64,6 +64,7 @@
         .row{
             margin-left: 0;
         }
+
     </style>
 @endpush
 
@@ -76,25 +77,27 @@
             <div class="row m-0">
                 @if(count($featuredposts) > 0)
                     @foreach ($featuredposts as $featuredpost)
-                <div class="col-3">
-                    <div class="row"><h5><a href="/post/{{$featuredpost->id}}">{{$featuredpost->title}}</a></h5></div>
-                    <div class="row picbox"><img src="{{URL::asset('/uploads/postcovers/'. $featuredpost->cover)}}" alt=""></div>
-                    <div class="row"><small>Ngày đăng:{{$featuredpost->created_at}}</small>{{$featuredpost->summary}}</div>
-                </div>
-                @endforeach
+                        <div class="col-3">
+                            <div class="row"><h5><a href="/post/{{$featuredpost->id}}">{{$featuredpost->title}}</a></h5></div>
+                            <div class="row picbox"><a href="/post/{{$featuredpost->id}}"><img src="{{URL::asset('/uploads/postcovers/'. $featuredpost->cover)}}" alt=""></a></div>
+                            <div class="row"><small>Ngày đăng:{{$featuredpost->created_at}}</small>{{$featuredpost->summary}}</div>
+                        </div>
+                    @endforeach
                 @else
                     Không có bài viết nào!!
                 @endif
                 <div class="col-3 carouselgallery">
                     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                         @if(count($carouselitems) >0)
-                            @foreach($carouselitems as $carouselitem)
-                        <div class="carousel-inner">
-                          <div class="carousel-item active">
-                            <img class="d-block w-100" src="{{URL::asset('/uploads/gallerypictures/' . $carouselitem->image)}}" alt="First slide">
-                          </div>
-                        </div>
-                        @endforeach
+                            <div class="carousel-inner">
+                                @foreach($carouselitems as $index=>$carouselitem)
+                                    {{-- Only loop the item, not the inner container. Also set the active
+                                        state to the first one as default, JS from bootstrap will replace it later --}}
+                                    <div class="carousel-item {{$index == 0 ? 'active' : ''}}">
+                                        <img class="d-block w-100" src="{{URL::asset('/uploads/gallerypictures/' . $carouselitem->image)}}" alt="First slide">
+                                    </div>
+                                @endforeach
+                            </div>
                         @else
                             Không có ảnh
                         @endif
@@ -106,21 +109,21 @@
                           <span class="carousel-control-next-icon" aria-hidden="true"></span>
                           <span class="sr-only">Next</span>
                         </a>
-                      </div>
+                    </div>
                 </div>
             </div>
-        <div class="other">
-            <h5>Tin cũ hơn</h5>
-            <ul>
-                @if(count($listposts) > 0)
-                    @foreach ($listposts as $listpost)
-                <li><a href="/post/{{$listpost->id}}">{{$listpost->title}}</a></li>
-                    @endforeach
-                @else
-                    Không có bài viết nào!!
-                @endif
-            </ul>
+            <div class="other">
+                <h5>Tin cũ hơn</h5>
+                <ul>
+                    @if(count($listposts) > 0)
+                        @foreach ($listposts as $listpost)
+                            <li><a href="/post/{{$listpost->id}}">{{$listpost->title}}</a></li>
+                        @endforeach
+                    @else
+                        Không có bài viết nào!!
+                    @endif
+                </ul>
+            </div>
         </div>
-    </div>
     </div>
 @endsection

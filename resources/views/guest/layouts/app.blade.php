@@ -34,3 +34,4 @@
 
     </div>
 @endsection
+{{-- cai do phu thuoc vao middleware cua ong. neu ong de middleware only admin thi chi admin vao dc thoi --}}

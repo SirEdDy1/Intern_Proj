@@ -61,7 +61,9 @@
                         <p>{{$post->summary}}</p>
                     </div>
                     <small>Ngày đăng: {{$post->created_at}}</small>
-                    <p>{{$post->content}}</p>
+                    <p>{!!nl2br($post->content)!!}</p>
+                    {{-- {!! !!} dung de populate html code. ban chat that {{}} no se convert het sang string de
+                    tranh hacker xai xss/crsf --}}
                 </div>
             </div>
             <div class="col">
