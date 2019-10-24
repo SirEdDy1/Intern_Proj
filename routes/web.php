@@ -45,7 +45,7 @@ Route::group([
     Route::get('admin/gallery', 'AdminController@managegallery')->name('admin.gallery.search');
     Route::get('admin/post', 'AdminController@managepost')->name('admin.post.search');
     Route::get('admin/post/{id}', 'AdminController@editpost');
-    Route::get('admin/contact', 'AdminController@managecontact');
+    Route::get('admin/contact', 'AdminController@managecontact')->name('admin.contact.search');
     Route::get('admin/contact/{id}','AdminController@showcontact')->name('admin.contact.detail');
     Route::get('admin/post/{id}','AdminController@showpost')->name('admin.post.detail');
     Route::post('admin/gallery','AdminController@admin_image_post')->name('admin.image.post');

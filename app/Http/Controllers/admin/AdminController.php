@@ -59,6 +59,14 @@ class AdminController extends Controller
         return view('admin.managedocument');
     }
     function managecontact(){
+        $searchData = $request->get('search');
+        if ($searchData !== null) {
+            $contacts = Contact::orderBy('created_at','desc')
+            ->where('name', 'like','%' . $searchData . '%')
+            ->paginate(5);
+         return view('admin.managecontact')->with('contacts',$contacts);
+        }
+
         $contacts = Contact::orderBy('created_at','desc')->paginate(10);
         return view('admin.managecontact')->with('contacts', $contacts);
     }
