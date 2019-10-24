@@ -23,13 +23,29 @@ class AdminController extends Controller
     function login(){
         return view('admin.login');
     }
-    function managegallery(){
+    function managegallery(Request $request){
+        $searchData = $request->get('search');
+        if ($searchData !== null) {
+            $pictures = Picture::orderBy('created_at','desc')
+            ->where('title', 'like','%' . $searchData . '%')
+            ->paginate(5);
+         return view('admin.managegallery')->with('pictures',$pictures);
+        }
+
         $pictures = Picture::orderBy('created_at','desc')->paginate(5);
         return view('admin.managegallery')->with('pictures',$pictures);
     }
-    function managepost(){
-        $posts = Post::orderBy('created_at','desc')->paginate(10);
+    function managepost(Request $request){
+        $searchData = $request->get('search');
+        if ($searchData !== null) {
+            $posts = Post::orderBy('created_at','desc')
+            ->where('title', 'like','%' . $searchData . '%')
+            ->paginate(10);
          return view('admin.managepost')->with('posts',$posts);
+        }
+
+        $posts = Post::orderBy('created_at','desc')->paginate(10);
+        return view('admin.managepost')->with('posts',$posts);
     }
     function editpost($id){
         $post = Post::find($id);

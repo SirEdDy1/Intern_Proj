@@ -30,15 +30,20 @@ Route::group([
 });
 
 
+Route::group([
+    'namespace' => 'admin',
+    'prefix' => 'admin'
+], function ($router) {
+    Route::get('/login', 'AdminController@login')->name('login');
+});
 
 Route::group([
     'namespace' => 'admin'
 ], function ($router) {
-    Route::get('/login', 'AdminController@login')->name('login');
-    Route::get('/admin', 'AdminController@dashboard');
+    Route::get('/admin', 'AdminController@managepost');
     Route::get('admin/document', 'AdminController@managepost');
-    Route::get('admin/gallery', 'AdminController@managegallery');
-    Route::get('admin/post', 'AdminController@managepost');
+    Route::get('admin/gallery', 'AdminController@managegallery')->name('admin.gallery.search');
+    Route::get('admin/post', 'AdminController@managepost')->name('admin.post.search');
     Route::get('admin/post/{id}', 'AdminController@editpost');
     Route::get('admin/contact', 'AdminController@managecontact');
     Route::get('admin/contact/{id}','AdminController@showcontact')->name('admin.contact.detail');
@@ -51,7 +56,12 @@ Route::group([
     Route::post('admin/post','AdminController@admin_post_create')->name('admin.post.create');
     Route::get('admin/post/{id}/edit','AdminController@editpost');
     Route::post('admin/post/{id}/edit','AdminController@admin_post_edit')->name('admin.post.edit');
+    Route::get('admin/post/search','AdminController@searchpost');
 
     Route::resource('contacts','AdminController');
 });
 
+
+//Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

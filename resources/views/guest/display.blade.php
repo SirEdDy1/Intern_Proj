@@ -28,6 +28,9 @@
             padding-top: 0.3125rem;
             padding-left: 0;
         }
+        .schedule > img{
+            position: relative;
+        }
         .schedule > p{
             font-size: 70%;
         }
@@ -55,7 +58,7 @@
             </div>
             <div class="col-6 schedule">
                 <h3>{{$post->title}}</h3>
-                <img src="{{URL::asset('/uploads/postcovers/'. $post->cover)}}" alt="" width="500px" height="350px">
+                <img src="{{URL::asset('/uploads/postcovers/'. $post->cover)}}" alt="" width="550px" height="350px">
                 <div>
                     <div class="summary">
                         <p>{{$post->summary}}</p>

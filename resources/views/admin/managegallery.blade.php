@@ -135,7 +135,7 @@
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-              <span class="hidden-xs">Alexander Pierce</span>
+              <span class="hidden-xs"></span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
@@ -190,20 +190,15 @@
     <section class="sidebar">
       <!-- Sidebar user panel -->
       <div class="user-panel">
-        <div class="pull-left image">
-          <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-        </div>
-        <div class="pull-left info">
-          <p>Alexander Pierce</p>
-          <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
-        </div>
+
+
       </div>
       <!-- search form -->
-      <form action="#" method="get" class="sidebar-form">
+      <form action="{{route('admin.gallery.search')}}" method="get" class="sidebar-form">
         <div class="input-group">
-          <input type="text" name="q" class="form-control" placeholder="Search...">
+          <input type="text" name="search" class="form-control" placeholder="Search...">
               <span class="input-group-btn">
-                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
+                <button type="submit" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
                 </button>
               </span>
         </div>
@@ -220,17 +215,17 @@
 
         <li class="treeview">
           <a href="/admin/post">
-            <i class="fa fa-book-open"></i> <span>Quản lý bài viết</span>
+            <i class="fa fa-book"></i> <span>Quản lý bài viết</span>
           </a>
         </li>
         <li class="treeview">
             <a href="/admin/gallery">
-              <i class="fa fa-images"></i> <span>Quản lý ảnh</span>
+              <i class="fa fa-picture-o"></i> <span>Quản lý ảnh</span>
             </a>
         </li>
         <li class="treeview">
             <a href="/admin/contact">
-              <i class="fa fa-images"></i> <span>Quản lý liên lạc</span>
+              <i class="fa fa-phone"></i> <span>Quản lý liên lạc</span>
             </a>
         </li>
       </ul>
@@ -248,11 +243,6 @@
         Quản lý
         <small>Thư viện ảnh</small>
       </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#">Examples</a></li>
-        <li class="active">Blank page</li>
-      </ol>
     </section>
 
     <!-- Main content -->
