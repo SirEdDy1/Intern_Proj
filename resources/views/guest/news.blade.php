@@ -64,6 +64,12 @@
             object-fit: cover;
             object-position: center;
         }
+        .navigation{
+            padding-left: 10rem;
+            padding-top: 5rem;
+            padding-bottom: 5rem;
+            position: relative;
+        }
     </style>
 @endpush
 
@@ -90,28 +96,31 @@
                 <div>
                     <header class="border-bottom">
                         <h4><i class="material-icons">bookmark</i>Tin Mới</h4>
-                        @if(count($listposts) > 0)
-                            @foreach ($listposts as $listpost)
                     </header>
-                        <section>
-                            <ul>
-                                <li>
-                                    <div class="newspic">
-                                        <img src="{{URL::asset('/uploads/postcovers/'. $listpost->cover)}}" alt="">
-                                    </div>
-                                    <div class="ext-right">
-                                        <h5><a href="/post/{{$listpost->id}}">{{$listpost->title}}</a></h5>
-                                        <p>{{$listpost->summary}}</p>
-                                    </div>
-                                </li>
-                            </ul>
-                         </section>
-                 </div>
-                  @endforeach
-              @else
-                      Không có bài viết nào!!
+                    <section>
+                        <ul>
+                            @if(count($listposts) > 0)
+                                @foreach ($listposts as $listpost)
+                                    <li>
+                                        <div class="newspic">
+                                            <img src="{{URL::asset('/uploads/postcovers/'. $listpost->cover)}}" alt="">
+                                        </div>
+                                        <div class="ext-right">
+                                            <h5><a href="/post/{{$listpost->id}}">{{$listpost->title}}</a></h5>
+                                            <p>{{$listpost->summary}}</p>
+                                        </div>
+                                    </li>
+                                @endforeach
+                            @else
+                                Không có bài viết nào!!
+                            @endif
+                            <div class="navigation">
+                                    {{ $listposts->links() }}
+                            </div>
+                        </ul>
+                    </section>
+                </div>
           </div>
-          @endif
 
           <div class="col">
               <h4>Liên hệ</h4>

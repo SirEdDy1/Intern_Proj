@@ -64,6 +64,12 @@
             object-fit: cover;
             object-position: center;
         }
+        .navigation{
+            padding-left: 10rem;
+            padding-top: 5rem;
+            padding-bottom: 5rem;
+            position: relative;
+        }
     </style>
 @endpush
 
@@ -89,10 +95,10 @@
                 <div>
                     <header class="border-bottom">
                         <h4><i class="material-icons">bookmark</i>Tin Mới</h4>
-                        @if(count($listposts) > 0)
-                            @foreach ($listposts as $listpost)
                     </header>
                     <section>
+                            @if(count($listposts) > 0)
+                            @foreach ($listposts as $listpost)
                         <ul>
                             <li>
                                 <div class="newspic">
@@ -104,14 +110,16 @@
                                 </div>
                             </li>
                         </ul>
+                        @endforeach
+                     @else
+                     Không có bài viết nào!!
+                    @endif
+                        <div class="navigation">
+                            {{ $listposts->links() }}
+                        </div>
                     </section>
                 </div>
-                @endforeach
-                @else
-                    Không có bài viết nào!!
             </div>
-            @endif
-
             <div class="col">
                 <h4>Liên hệ</h4>
                 <ul>

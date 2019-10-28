@@ -78,7 +78,7 @@
                 @if(count($featuredposts) > 0)
                     @foreach ($featuredposts as $featuredpost)
                         <div class="col-3">
-                            <div class="row"><h5><a href="/post/{{$featuredpost->id}}">{{$featuredpost->title}}</a></h5></div>
+                            <div class="row"><h6><a href="/post/{{$featuredpost->id}}">{{$featuredpost->title}}</a></h6></div>
                             <div class="row picbox"><a href="/post/{{$featuredpost->id}}"><img src="{{URL::asset('/uploads/postcovers/'. $featuredpost->cover)}}" alt=""></a></div>
                             <div class="row"><small>Ngày đăng:{{$featuredpost->created_at}}</small>{{$featuredpost->summary}}</div>
                         </div>
@@ -87,6 +87,7 @@
                     Không có bài viết nào!!
                 @endif
                 <div class="col-3 carouselgallery">
+                    <h6>Ảnh nổi bật</h6>
                     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                         @if(count($carouselitems) >0)
                             <div class="carousel-inner">
