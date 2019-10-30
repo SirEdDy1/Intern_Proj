@@ -40,11 +40,11 @@ class AdminController extends Controller
         if ($searchData !== null) {
             $posts = Post::orderBy('created_at','desc')
             ->where('title', 'like','%' . $searchData . '%')
-            ->paginate(10);
+            ->paginate(5);
          return view('admin.managepost')->with('posts',$posts);
         }
 
-        $posts = Post::orderBy('created_at','desc')->paginate(10);
+        $posts = Post::orderBy('created_at','desc')->paginate(5);
         return view('admin.managepost')->with('posts',$posts);
     }
     function editpost($id){

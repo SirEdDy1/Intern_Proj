@@ -189,7 +189,6 @@
       <!-- Sidebar user panel -->
       <!-- search form -->
       <form action="{{route('admin.post.search')}}" method="get" class="sidebar-form">
-        @csrf
         <div class="input-group">
           <input type="text" name="search" class="form-control" placeholder="Search...">
               <span class="input-group-btn">
@@ -280,7 +279,7 @@
         </div>
         <!-- /.box-body -->
         <div class="box-footer">
-
+          {{ $posts->links() }}
         </div>
         <!-- /.box-footer-->
       </div>
